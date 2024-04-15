@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script>
+      $(document).ready(function () {
+        total_bill = 0;
+        listSP = JSON.parse(sessionStorage.getItem("listSP"));
+        var cartItems = [];
+
+        // Lặp qua giỏ hàng và lưu trữ chỉ mục của sản phẩm
+        for (var i = 0; i < listSP.length; i++) {
+          var cartItem = JSON.parse(sessionStorage.getItem(listSP[i].id));
+          if (cartItem !== null) {
+            cartItems.push({
+              index: i,
+              quantity: cartItem.sl,
+            });
+          }
+        }
+        // Hiển thị các sản phẩm trong giỏ hàng
+        cartItems.forEach(function (item) {
+          var sp = listSP[item.index];
+          var row =
+            "<tr id ='" +
+            sp.id +
+            "'><td><img src='" +
+            sp.hinh +
+            "' class='thumbnail'></td><td>" +
+            sp.ten +
+            "</td><td style='position: relative;'> <div class='qtt'><p id='quantity" +
+            sp.id +
+            "'>" +
+            item.quantity +
+            "</p></div></td><td>" +
+            sp.gia +
+            "</td><td style='position: relative;'><div id='total_price" +
+            sp.id +
+            "'>" +
+            item.quantity * sp.gia +
+            "</div><button type='button' class='close' id='remove_product" +
+            sp.id +
+            "' onclick='remove_product(" +
+            sp.id +
+            ")'>&times;</button></td></tr>";
+          document.getElementById("tblcart").innerHTML += row;
+          total_bill += parseInt(item.quantity) * parseInt(sp.gia);
+        });
+
+        // Hiển thị tổng hóa đơn
+        document.getElementById("shoppingcart").innerHTML +=
+          "<div class='total_bill' id='total_bill'>Tổng cộng: " +
+          total_bill +
+          "₫</div>";
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid max_width">
+      <header id="header">
+        <a href="home.html" class="logo">
+          <img src="../img/logo.png" alt="Logo" />
+        </a>
+        <nav class="navbar" id="nav-bar">
+          <ul>
+            <li><a href="../html/home.html">Trang chủ</a></li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="../html/listproduct.html"
+                data-toggle="dropdown"
+              >
+                Sản phẩm
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="../html/listproduct.html"
+                  >Tất cả (12)</a
+                >
+                <a class="dropdown-item" href="../html/nhomviet.html"
+                  >Viết (4)</a
+                >
+                <a class="dropdown-item" href="../html/nhomtapvo.html"
+                  >Tập, vở (2)</a
+                >
+                <a class="dropdown-item" href="../html/nhomsanphamkhac.html"
+                  >Khác (6)</a
+                >
+              </div>
+            </li>
+            <li><a href="../html/introduce.html">Giới thiệu</a></li>
+            <li><a href="../html/sitemap.html">Site Map</a></li>
+            <li><a href="../html/register.html">Đăng ký</a></li>
+          </ul>
+        </nav>
+        <div class="responsive" id="responsive">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="icon">
+          <button type="button" onclick="Search()">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+          <button type="button" data-toggle="modal" data-target="#myModal">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </button>
+          <a href="cart.html"
+            ><i class="fa fa-shopping-cart" aria-hidden="true"></i
+          ></a>
+        </div>
+        <div class="form-search" id="form-search">
+          <input type="text" id="txt-search" placeholder="Tìm kiếm..." />
+          <button type="button" id="search-btn">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="modal" id="myModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title">Đăng nhập</h3>
+                <button type="button" class="close" data-dismiss="modal">
+                  &times;
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="" class="form">
+                  <div class="form-group text-center col-12">
+                    <input
+                      class="form-control col-10 d-inline-block"
+                      type="email"
+                      name="email"
+                      id="emailDN"
+                      placeholder="Email"
+                    />
+                    <div class="icon d-inline-block pl-2">
+                      <i class="fas fa-envelope"></i>
+                    </div>
+                  </div>
+                  <div class="form-group text-center col-12">
+                    <input
+                      class="form-control col-10 d-inline-block"
+                      type="password"
+                      name="pass"
+                      id="passwordDN"
+                      placeholder="Mật khẩu"
+                    />
+                    <div class="icon d-inline-block pl-2">
+                      <i class="fas fa-lock"></i>
+                    </div>
+                  </div>
+                  <div class="form-group d-flex justify-content-around">
+                    <label for="" class="form-check-label">
+                      <input
+                        class="form-check d-inline"
+                        type="checkbox"
+                        name="rememberMe"
+                        id="rememberMe"
+                      />
+                      Lưu mật khẩu
+                    </label>
+                    <label for="">
+                      <a href="#">Quên mật khẩu</a>
+                    </label>
+                  </div>
+                  <div class="form-group text-center col-12">
+                    <button
+                      type="submit"
+                      class="btn btn-success"
+                      onclick="DangNhap()"
+                    >
+                      Đăng nhập
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <p>Chưa có tài khoản? <a href="register.html">Đăng ký</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section>
+        <table id="tblcart" class="tblcart table table-bordered table-hover">
+          <tr style="font-weight: bold">
+            <td>Hình ảnh</td>
+            <td>Tên sản phẩm</td>
+            <td>Số lượng</td>
+            <td>Giá</td>
+            <td>Tổng tiền</td>
+          </tr>
+        </table>
+        <div
+          id="shoppingcart"
+          class="total_bill"
+          style="text-align: right; color: red"
+        ></div>
+        <div class="d-flex justify-content-center">
+          <button id="buy-button" class="btn btn-primary mr-2" onclick="buy()">
+            Mua
+          </button>
+          <button id="reset-button" class="btn btn-primary" onclick="reset()">
+            Xóa giỏ hàng
+          </button>
+        </div>
+      </section>
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <h3>Về website</h3>
+              <p>Đây là website chính thức của cửa hàng</p>
+            </div>
+            <div class="col-md-4">
+              <h3>Liên hệ với tôi qua</h3>
+              <ul>
+                <li><i class="fa fa-envelope"></i> phanhuuloc1234@gmail.com</li>
+                <li><i class="fa fa-phone"></i> 0898189522</li>
+                <li><i class="fa fa-map-marker"></i> Gò Vấp TP. Hồ Chí Minh</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h3>Theo dõi tôi trên</h3>
+              <ul class="social">
+                <li>
+                  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="../js/script.js"></script>
+    <script>
+      showSlide(0);
+    </script>
+  </body>
+</html>

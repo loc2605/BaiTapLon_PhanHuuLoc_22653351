@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <!-- JavaScript -->
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- External Library -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container-fluid max_width">
+      <header id="header">
+        <a href="home.html" class="logo">
+          <img src="../img/logo.png" alt="Logo" />
+        </a>
+        <nav class="navbar" id="nav-bar">
+          <ul>
+            <li><a href="../html/home.html">Trang chủ</a></li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="../html/listproduct.html"
+                data-toggle="dropdown"
+              >
+                Sản phẩm
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="../html/listproduct.html"
+                  >Tất cả (12)</a
+                >
+                <a class="dropdown-item" href="../html/nhomviet.html"
+                  >Viết (4)</a
+                >
+                <a class="dropdown-item" href="../html/nhomtapvo.html"
+                  >Tập, vở (2)</a
+                >
+                <a class="dropdown-item" href="../html/nhomsanphamkhac.html"
+                  >Khác (6)</a
+                >
+              </div>
+            </li>
+            <li><a href="../html/introduce.html">Giới thiệu</a></li>
+            <li><a href="../html/sitemap.html">Site Map</a></li>
+            <li><a href="../html/register.html">Đăng ký</a></li>
+          </ul>
+        </nav>
+        <div class="responsive" id="responsive">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="icon">
+          <button type="button" onclick="Search()">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+          <button type="button" data-toggle="modal" data-target="#myModal">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </button>
+          <a href="cart.html"
+            ><i class="fa fa-shopping-cart" aria-hidden="true"></i
+          ></a>
+        </div>
+        <div class="form-search" id="form-search">
+          <input type="text" id="txt-search" placeholder="Tìm kiếm..." />
+          <button type="button" id="search-btn">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="modal" id="myModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title">Đăng nhập</h3>
+                <button type="button" class="close" data-dismiss="modal">
+                  &times;
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="" class="form">
+                  <div class="form-group text-center col-12">
+                    <input
+                      class="form-control col-10 d-inline-block"
+                      type="email"
+                      name="email"
+                      id="emailDN"
+                      placeholder="Email"
+                    />
+                    <div class="icon d-inline-block pl-2">
+                      <i class="fas fa-envelope"></i>
+                    </div>
+                  </div>
+                  <div class="form-group text-center col-12">
+                    <input
+                      class="form-control col-10 d-inline-block"
+                      type="password"
+                      name="pass"
+                      id="passwordDN"
+                      placeholder="Mật khẩu"
+                    />
+                    <div class="icon d-inline-block pl-2">
+                      <i class="fas fa-lock"></i>
+                    </div>
+                  </div>
+                  <div class="form-group d-flex justify-content-around">
+                    <label for="" class="form-check-label">
+                      <input
+                        class="form-check d-inline"
+                        type="checkbox"
+                        name="rememberMe"
+                        id="rememberMe"
+                      />
+                      Lưu mật khẩu
+                    </label>
+                    <label for="">
+                      <a href="#">Quên mật khẩu</a>
+                    </label>
+                  </div>
+                  <div class="form-group text-center col-12">
+                    <button
+                      type="submit"
+                      class="btn btn-success"
+                      onclick="DangNhap()"
+                    >
+                      Đăng nhập
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <p>Chưa có tài khoản? <a href="register.html">Đăng ký</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section class="home">
+        <div class="slider">
+          <div class="slide">
+            <img src="../img/Nen1.jpg" />
+          </div>
+          <div class="slide">
+            <img src="../img/Nen2.jpg" />
+          </div>
+          <div class="slide">
+            <img src="../img/Nen3.jpg" />
+          </div>
+          <div class="slide">
+            <img src="../img/Nen4.jpg" />
+          </div>
+        </div>
+        <h4>WELCOME TO MY STORE</h4>
+      </section>
+      <section class="intro">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <h2>Chào mừng đến với cửa hàng văn phòng phẩm của tôi!</h2>
+              <p>
+                Về văn phòng phẩm, tôi cung cấp các sản phẩm văn phòng phẩm chất
+                lượng cao từ các thương hiệu uy tín. Từ bút bi, giấy, sổ tay đến
+                các dụng cụ văn phòng khác, tôi đảm bảo cung cấp những sản phẩm
+                phù hợp và chất lượng nhất để đáp ứng nhu cầu của bạn. Hãy ghé
+                qua cửa hàng của tôi để khám phá các sản phẩm hữu ích cho công
+                việc và học tập của bạn nhé!
+              </p>
+              <button
+                class="btn btn-primary"
+                onclick="location.href='listproduct.html'"
+              >
+                Mua ngay
+              </button>
+            </div>
+            <div class="col-md-6">
+              <img src="../img/VanPhongPham.webp" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="banner pt-4">
+        <h4 class="text-muted"><b>Mua nhiều nhất</b></h4>
+        <div class="danhsach">
+          <a href="../html/butthienlong.html">
+            <div class="box">
+              <img
+                src="../img/ButThienLong.jpg"
+                alt=""
+                style="border-radius: 5px"
+              />
+              <div class="content">
+                <h5>Bút bi Thiên Long nhiều màu</h5>
+                <p class="text-danger">4.000₫</p>
+              </div>
+            </div>
+          </a>
+          <a href="../html/vokengang.html">
+            <div class="box">
+              <img src="../img/SoTay.jpg" alt="" style="border-radius: 5px" />
+              <div class="content">
+                <h5>Sổ Tay Lò Xo Ghi Chép A5</h5>
+                <p class="text-danger">25.000₫</p>
+              </div>
+            </div>
+          </a>
+          <a href="../html/giaynote.html">
+            <div class="box">
+              <img
+                src="../img/GiayNote.jpg"
+                alt=""
+                style="border-radius: 5px"
+              />
+              <div class="content">
+                <h5>Set 50 Tờ Giấy Ghi Chú Mini</h5>
+                <p class="text-danger">7.000₫</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <h3>Về website</h3>
+              <p>Đây là website chính thức của cửa hàng</p>
+            </div>
+            <div class="col-md-4">
+              <h3>Liên hệ với tôi qua</h3>
+              <ul>
+                <li><i class="fa fa-envelope"></i> phanhuuloc1234@gmail.com</li>
+                <li><i class="fa fa-phone"></i> 0898189522</li>
+                <li><i class="fa fa-map-marker"></i> Gò Vấp TP. Hồ Chí Minh</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h3>Theo dõi tôi trên</h3>
+              <ul class="social">
+                <li>
+                  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="../js/script.js"></script>
+    <script>
+      showSlide(0);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giấy Ghi Chú Mini</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container-fluid max_width">
+      <header id="header">
+        <a href="home.html" class="logo">
+          <img src="../img/logo.png" alt="Logo" />
+        </a>
+        <nav class="navbar" id="nav-bar">
+          <ul>
+            <li><a href="../html/home.html">Trang chủ</a></li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="../html/listproduct.html"
+                data-toggle="dropdown"
+              >
+                Sản phẩm
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="../html/listproduct.html"
+                  >Tất cả (12)</a
+                >
+                <a class="dropdown-item" href="../html/nhomviet.html"
+                  >Viết (4)</a
+                >
+                <a class="dropdown-item" href="../html/nhomtapvo.html"
+                  >Tập, vở (2)</a
+                >
+                <a class="dropdown-item" href="../html/nhomsanphamkhac.html"
+                  >Khác (6)</a
+                >
+              </div>
+            </li>
+            <li><a href="../html/introduce.html">Giới thiệu</a></li>
+            <li><a href="../html/sitemap.html">Site Map</a></li>
+            <li><a href="../html/register.html">Đăng ký</a></li>
+          </ul>
+        </nav>
+        <div class="responsive" id="responsive">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="icon">
+          <button type="button" onclick="Search()">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+          <button type="button" data-toggle="modal" data-target="#myModal">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </button>
+          <a href="cart.html"
+            ><i class="fa fa-shopping-cart" aria-hidden="true"></i
+          ></a>
+        </div>
+        <div class="form-search" id="form-search">
+          <input type="text" id="txt-search" placeholder="Tìm kiếm..." />
+          <button type="button" id="search-btn">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="modal" id="myModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title">Đăng nhập</h3>
+                <button type="button" class="close" data-dismiss="modal">
+                  &times;
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="" class="form">
+                  <div class="form-group text-center col-12">
+                    <input
+                      class="form-control col-10 d-inline-block"
+                      type="email"
+                      name="email"
+                      id="emailDN"
+                      placeholder="Email"
+                    />
+                    <div class="icon d-inline-block pl-2">
+                      <i class="fas fa-envelope"></i>
+                    </div>
+                  </div>
+                  <div class="form-group text-center col-12">
+                    <input
+                      class="form-control col-10 d-inline-block"
+                      type="password"
+                      name="pass"
+                      id="passwordDN"
+                      placeholder="Mật khẩu"
+                    />
+                    <div class="icon d-inline-block pl-2">
+                      <i class="fas fa-lock"></i>
+                    </div>
+                  </div>
+                  <div class="form-group d-flex justify-content-around">
+                    <label for="" class="form-check-label">
+                      <input
+                        class="form-check d-inline"
+                        type="checkbox"
+                        name="rememberMe"
+                        id="rememberMe"
+                      />
+                      Lưu mật khẩu
+                    </label>
+                    <label for="">
+                      <a href="#">Quên mật khẩu</a>
+                    </label>
+                  </div>
+                  <div class="form-group text-center col-12">
+                    <button
+                      type="submit"
+                      class="btn btn-success"
+                      onclick="DangNhap()"
+                    >
+                      Đăng nhập
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <p>Chưa có tài khoản? <a href="register.html">Đăng ký</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section class="product-detail container">
+        <div class="slider">
+          <div class="slide">
+            <img src="../img/GiayNote.jpg" alt="" />
+          </div>
+          <div class="slide">
+            <img src="../img/giaynote1.jpg" alt="" />
+          </div>
+          <div class="slide">
+            <img src="../img/giaynote2.jpg" alt="" />
+          </div>
+          <div class="slide">
+            <img src="../img/giaynote3.jpg" alt="" />
+          </div>
+          <div class="slide">
+            <img src="../img/giaynote4.jpg" alt="" />
+          </div>
+          <div class="slide">
+            <img src="../img/giaynote5.jpg" alt="" />
+          </div>
+          <button id="prev" class="btnleft" onclick="prev()">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+          </button>
+          <button id="next" class="btnright" onclick="next()">
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="content">
+          <h2 id="ten">Set 50 Tờ Giấy Ghi Chú Mini</h2>
+          <h3 id="gia" class="text-danger">7.000₫</h3>
+          <p id="mota" style="text-align: justify">
+            <b> Thông tin sản phẩm:</b> <br />
+            - Chất liệu: giấy cao cấp ( có keo sẵn mặt sau) <br />
+            - Loại có thể dán được <br />
+            - Trọng lượng: 50g <br />
+            - Kích thước: 8x8cm <br />
+            - Đóng gói: túi OPP độc lập<br />
+            Sản phẩm gồm 50 tờ giấy ghi chú với kích thước 8x8cm, tiện lợi để
+            mang theo hay để trên bàn làm việc của bạn. Sản phẩm không chỉ giúp
+            bạn lưu lại các thông tin cần thiết trong công việc, học tập hay
+            cuộc sống hàng ngày; mà còn là phụ kiện trang trí văn phòng siêu
+            xinh xắn. Sản phẩm được đựng trong túi OPP nhỏ gọn và tiện lợi; nặng
+            chỉ 24.5g nên không chiếm quá nhiều diện tích của túi hoặc ngăn kéo
+            của bạn. Để các thông tin quan trọng luôn được sắp xếp rõ ràng hơn,
+            hãy thêm Set 50 Tờ Giấy Ghi Chú Mini vào danh sách thiết kế văn
+            phòng của riêng bạn!
+          </p>
+          <div class="btn_qtt">
+            <div class="qtt">
+              <button class="plus" onclick="plus()">+</button>
+              <p id="quantity">1</p>
+              <button class="minus" onclick="minus()">-</button>
+            </div>
+            <button
+              class="btnThemSP"
+              onclick="themsl(3); alert('Thêm thành công')"
+            >
+              Thêm vào giỏ hàng
+            </button>
+          </div>
+        </div>
+      </section>
+      <h6 class="text-muted">CÓ THỂ BẠN CŨNG THÍCH</h6>
+      <section class="list">
+        <a href="biadungtailieu.html">
+          <div class="box">
+            <div class="icon">
+              <i class="box-icon fa fa-cart-plus" aria-hidden="true"></i>
+              <i class="box-icon fa fa-eye" aria-hidden="true"></i>
+            </div>
+            <img src="../img/BiaDungTaiLieu.jpg" alt="" />
+            <h6>Bìa Đựng Tài Liệu A4</h6>
+            <p class="text-danger">18.400₫</p>
+            <p class="text-muted">Đã bán 5.4k</p>
+          </div>
+        </a>
+        <a href="kepgiay.html">
+          <div class="box">
+            <div class="icon">
+              <i class="box-icon fa fa-cart-plus" aria-hidden="true"></i>
+              <i class="box-icon fa fa-eye" aria-hidden="true"></i>
+            </div>
+            <img src="../img/KepGiay.jpg" alt="" />
+            <h6>Kẹp Tài Liệu Giấy Văn Phòng</h6>
+            <p class="text-danger">1.000₫</p>
+            <p class="text-muted">Đã bán 14k</p>
+          </div>
+        </a>
+        <a href="vokengang.html">
+          <div class="box">
+            <div class="icon">
+              <i class="box-icon fa fa-cart-plus" aria-hidden="true"></i>
+              <i class="box-icon fa fa-eye" aria-hidden="true"></i>
+            </div>
+            <img src="../img/Tap.jpg" alt="" />
+            <h6>Sổ Tay Lò Xo Ghi Chép A5</h6>
+            <p class="text-danger">12.000₫</p>
+            <p class="text-muted">Đã bán 10.1k</p>
+          </div>
+        </a>
+        <a href="hopbut.html">
+          <div class="box">
+            <div class="icon">
+              <i class="box-icon fa fa-cart-plus" aria-hidden="true"></i>
+              <i class="box-icon fa fa-eye" aria-hidden="true"></i>
+            </div>
+            <img src="../img/HopDungBut.png" alt="" />
+            <h6>Ống Đựng Bút Trong Suốt</h6>
+            <p class="text-danger">38.300₫</p>
+            <p class="text-muted">Đã bán 470</p>
+          </div>
+        </a>
+        <a href="butchi.html">
+          <div class="box">
+            <div class="icon">
+              <i class="box-icon fa fa-cart-plus" aria-hidden="true"></i>
+              <i class="box-icon fa fa-eye" aria-hidden="true"></i>
+            </div>
+            <img src="../img/ButChi.jpg" alt="" />
+            <h6>Bút Chì Lục Giác 2B MEKI</h6>
+            <p class="text-danger">2.000₫</p>
+            <p class="text-muted">Đã bán 2.1k</p>
+          </div>
+        </a>
+      </section>
+      <a href="listproduct.html" class="btnXemTatCa">Xem tất cả>></a>
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <h3>Về website</h3>
+              <p>Đây là website chính thức của cửa hàng</p>
+            </div>
+            <div class="col-md-4">
+              <h3>Liên hệ với tôi qua</h3>
+              <ul>
+                <li><i class="fa fa-envelope"></i> phanhuuloc1234@gmail.com</li>
+                <li><i class="fa fa-phone"></i> 0898189522</li>
+                <li><i class="fa fa-map-marker"></i> Gò Vấp TP. Hồ Chí Minh</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h3>Theo dõi tôi trên</h3>
+              <ul class="social">
+                <li>
+                  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="../js/script.js"></script>
+    <script>
+      showSlide(0);
+    </script>
+  </body>
+</html>
