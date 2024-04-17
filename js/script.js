@@ -313,9 +313,9 @@ function remove_product(id) {
 
   total_bill -= removedPrice;
   document.getElementById("shoppingcart").innerHTML =
-    "<div class='total_bill' id='total_bill'>Tổng cộng: $" +
+    "<div class='total_bill' id='total_bill'>Tổng cộng: " +
     total_bill +
-    "</div>";
+    "₫</div>";
 
   sessionStorage.removeItem(id);
 }
